@@ -26,7 +26,7 @@ spline = StatisticalBeamSplineSolver(
 result = spline.solve()
 
 # Evaluate
-eval_t = np.linspace(T[0], T[-1], 128)
+eval_t = np.linspace(T[0], T[-1], 256)
 eval_states = result.evaluate(eval_t)
 edge_states = result.get_all_edge_states()
 

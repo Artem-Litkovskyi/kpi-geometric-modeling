@@ -1,3 +1,4 @@
+import os
 from collections.abc import Sequence
 
 import numpy as np
@@ -19,10 +20,13 @@ ZERO_LINE_STYLE = {
 }
 
 
-def custom_legend(axes: Axes, styles: Sequence[dict], labels: Sequence[str]):
+def custom_legend(
+    axes: Axes, styles: Sequence[dict], labels: Sequence[str], loc: str = "best"
+):
     """Apply custom legend to the axes."""
     lines = [Line2D([0], [0], **kwargs) for kwargs in styles]
-    axes.legend(lines, labels)
+    # noinspection bad-argument-type
+    axes.legend(lines, labels, loc=loc)
 
 
 def tmm_element_subplots(
@@ -189,3 +193,13 @@ def plot_tmm_element(
             **plot_styles[axis_i],
             marker="o",
         )
+
+
+def save_figure(fig, path, filename, extension="png", dpi=200):
+    """Save matplotlib figure as an image and closes it."""
+    if not os.path.exists(path):
+        os.makedirs(path)
+    full_path = f"{path}/{filename}.{extension}"
+    fig.savefig(full_path, dpi=dpi)
+    plt.close(fig)
+    print(f"Saved figure to path: {full_path}")

@@ -219,3 +219,7 @@ __marimo__/
 
 # OS specific
 .DS_Store
+
+# Project specific
+plots
+tables

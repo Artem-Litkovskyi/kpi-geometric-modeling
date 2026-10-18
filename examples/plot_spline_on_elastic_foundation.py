@@ -34,7 +34,7 @@ for bandwidth in bandwidths:
     results.append(spline.solve())
 
 # Evaluate
-eval_t = np.linspace(T[0], T[-1], 128)
+eval_t = np.linspace(T[0], T[-1], 256)
 
 eval_states_list = []
 edge_states_list = []
